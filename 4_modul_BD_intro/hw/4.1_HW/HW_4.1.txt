@@ -1,0 +1,29 @@
+--1. Запрос, который вернет характеристики размера вооружённых сил Катара. 
+select country, "Armed Forces size"
+from test.world_data
+where country = 'Qatar'
+
+--2. Запрос, который вернет все страны с Fertility Rate менее 2.
+select country, "Fertility Rate"
+from test.world_data
+where "Fertility Rate" >= 2
+
+--3. Запрос, который вернет все страны с аббревиатурой  abbreviation, начинающейся на S, или продолжительностью жизни «Life expectancy» менее 60 лет.
+SELECT country, abbreviation
+FROM test.world_data
+WHERE abbreviation LIKE 'S%' OR "Life expectancy" >= 60;
+
+--4. Запрос который вернёт все страны, где официальный язык английский.
+SELECT country, "Official language"
+FROM test.world_data
+WHERE "Official language" LIKE 'Eng%';
+
+- или явно задаем 
+SELECT country, "Official language"
+FROM test.world_data
+WHERE "Official language" = 'English';
+
+--5. Запрос который вернёт все страны, где официальный язык английский, с «Maternal mortality ratio»  менее 20  или  Life expectancy < 60.
+SELECT country, "Official language", "Maternal mortality ratio"
+FROM test.world_data
+WHERE ("Life expectancy" < 60 AND "Maternal mortality ratio" < 20) OR "Official language" = 'English';
